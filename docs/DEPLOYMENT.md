@@ -66,8 +66,8 @@ The release bundle is reproduced on macOS arm64; Linux refitting produces differ
 - Entrypoint: `streamlit_app.py`
 - Python: **3.11** in Advanced settings
 - Secrets: none required by this application
-- Access: retain a private review deployment while dataset reuse and preprocessing documentation are incomplete
+- Intended access: public historical portfolio/research demonstration, as requested by the owner
 
-Sign in at https://share.streamlit.io using the project owner's GitHub account, grant access to the private repository, and choose Create app. A private repository can be deployed without making its source public. Review the app's viewer access settings explicitly before sharing its URL. The source references do not by themselves verify the preprocessed target data; consult `DATA.md`.
+Sign in at https://share.streamlit.io using the project owner's GitHub account, grant access to the private repository, and choose Create app. The repository is public. Review the app's viewer access settings before sharing its URL. The source references do not by themselves verify the preprocessed target data; consult `DATA.md`.
 
 The Codex browser-control tool failed to initialize in this session, so provider sign-in, repository authorization and the Create app submission require the owner to complete those steps in their browser. No live hosting deployment is claimed by the GitHub verification record.

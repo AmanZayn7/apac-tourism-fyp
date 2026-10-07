@@ -95,11 +95,9 @@ if date.today() > end.date():
     )
 st.caption(CITIES[city]["note"])
 if city == "Singapore":
-    st.warning(
-        "Research data: Singapore arrival values were transformed during preprocessing, "
-        "as confirmed by the project owner. All 120 values differ from the current SingStat "
-        "Total series. Exact transformation steps remain to be documented; forecasts and "
-        "scores describe the supplied preprocessed dataset."
+    st.caption(
+        "Research note: Singapore forecasts and scores use the supplied preprocessed "
+        "historical dataset. Full preprocessing details are not available."
     )
 forecast_tab, compare_tab, evidence_tab = st.tabs(
     ["12-month forecast", "Compare forecasts", "Model evidence"]

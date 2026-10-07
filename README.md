@@ -85,6 +85,10 @@ legacy/                Original application, saved results, and nine notebooks
 
 See [methodology](docs/METHODOLOGY.md) for exact folds and model settings and [architecture](docs/ARCHITECTURE.md) for the build/serve boundary. The archived virtual environment and 240 MB duplicate ZIP were deliberately excluded; the original Downloads folder remains unchanged.
 
+## Portfolio demonstration
+
+This public project demonstrates historical tourism forecasting and model comparison using supplied preprocessed research data. Forecasts cover January–December 2025; it is not a live tourism feed. Full preparation records are not available, and source links identify the reported publishers rather than certify every prepared value. Models and their mixed results are retained for educational comparison.
+
 ## Source references and release status
 
 The project owner confirmed arrivals references from [SingStat](https://tablebuilder.singstat.gov.sg/table/TS/M550241), [Hong Kong Tourism Board](https://www.discoverhongkong.com/eng/hktb/newsroom/tourism-statistics.html), and [Bank of Thailand report 875](https://app.bot.or.th/BTWS_STAT/statistics/ReportPage.aspx?reportID=875&language=eng). These identify the reported sources; they do not certify the preparation of the supplied CSVs. See [data provenance and reuse notes](docs/DATA.md).
