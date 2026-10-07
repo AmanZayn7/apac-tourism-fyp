@@ -1,0 +1,615 @@
+{
+  "compared": 120,
+  "matched": 0,
+  "differences": [
+    {
+      "date": "2015-01-01",
+      "supplied": 1208332.0,
+      "official": 1252608.0
+    },
+    {
+      "date": "2015-02-01",
+      "supplied": 1231689.0,
+      "official": 1188818.0
+    },
+    {
+      "date": "2015-03-01",
+      "supplied": 1164117.0,
+      "official": 1201648.0
+    },
+    {
+      "date": "2015-04-01",
+      "supplied": 1213484.0,
+      "official": 1208624.0
+    },
+    {
+      "date": "2015-05-01",
+      "supplied": 1257957.0,
+      "official": 1222836.0
+    },
+    {
+      "date": "2015-06-01",
+      "supplied": 1255519.0,
+      "official": 1184747.0
+    },
+    {
+      "date": "2015-07-01",
+      "supplied": 1298509.0,
+      "official": 1519233.0
+    },
+    {
+      "date": "2015-08-01",
+      "supplied": 1336780.0,
+      "official": 1445062.0
+    },
+    {
+      "date": "2015-09-01",
+      "supplied": 1284828.0,
+      "official": 1131976.0
+    },
+    {
+      "date": "2015-10-01",
+      "supplied": 1315213.0,
+      "official": 1246947.0
+    },
+    {
+      "date": "2015-11-01",
+      "supplied": 1319098.0,
+      "official": 1203992.0
+    },
+    {
+      "date": "2015-12-01",
+      "supplied": 1339754.0,
+      "official": 1424978.0
+    },
+    {
+      "date": "2016-01-01",
+      "supplied": 1362156.0,
+      "official": 1412123.0
+    },
+    {
+      "date": "2016-02-01",
+      "supplied": 1371886.0,
+      "official": 1335097.0
+    },
+    {
+      "date": "2016-03-01",
+      "supplied": 1369139.0,
+      "official": 1406607.0
+    },
+    {
+      "date": "2016-04-01",
+      "supplied": 1394075.0,
+      "official": 1393972.0
+    },
+    {
+      "date": "2016-05-01",
+      "supplied": 1396638.0,
+      "official": 1357543.0
+    },
+    {
+      "date": "2016-06-01",
+      "supplied": 1350002.0,
+      "official": 1270531.0
+    },
+    {
+      "date": "2016-07-01",
+      "supplied": 1376599.0,
+      "official": 1622405.0
+    },
+    {
+      "date": "2016-08-01",
+      "supplied": 1367495.0,
+      "official": 1481876.0
+    },
+    {
+      "date": "2016-09-01",
+      "supplied": 1294472.0,
+      "official": 1144063.0
+    },
+    {
+      "date": "2016-10-01",
+      "supplied": 1307088.0,
+      "official": 1237675.0
+    },
+    {
+      "date": "2016-11-01",
+      "supplied": 1353021.0,
+      "official": 1235433.0
+    },
+    {
+      "date": "2016-12-01",
+      "supplied": 1425751.0,
+      "official": 1506134.0
+    },
+    {
+      "date": "2017-01-01",
+      "supplied": 1420918.0,
+      "official": 1480479.0
+    },
+    {
+      "date": "2017-02-01",
+      "supplied": 1414296.0,
+      "official": 1361010.0
+    },
+    {
+      "date": "2017-03-01",
+      "supplied": 1443018.0,
+      "official": 1480161.0
+    },
+    {
+      "date": "2017-04-01",
+      "supplied": 1462555.0,
+      "official": 1470750.0
+    },
+    {
+      "date": "2017-05-01",
+      "supplied": 1414603.0,
+      "official": 1363897.0
+    },
+    {
+      "date": "2017-06-01",
+      "supplied": 1422128.0,
+      "official": 1387601.0
+    },
+    {
+      "date": "2017-07-01",
+      "supplied": 1436071.0,
+      "official": 1632135.0
+    },
+    {
+      "date": "2017-08-01",
+      "supplied": 1440413.0,
+      "official": 1559283.0
+    },
+    {
+      "date": "2017-09-01",
+      "supplied": 1483838.0,
+      "official": 1320050.0
+    },
+    {
+      "date": "2017-10-01",
+      "supplied": 1482725.0,
+      "official": 1402299.0
+    },
+    {
+      "date": "2017-11-01",
+      "supplied": 1524346.0,
+      "official": 1397330.0
+    },
+    {
+      "date": "2017-12-01",
+      "supplied": 1494200.0,
+      "official": 1569616.0
+    },
+    {
+      "date": "2018-01-01",
+      "supplied": 1515147.0,
+      "official": 1563359.0
+    },
+    {
+      "date": "2018-02-01",
+      "supplied": 1536133.0,
+      "official": 1491970.0
+    },
+    {
+      "date": "2018-03-01",
+      "supplied": 1539214.0,
+      "official": 1584406.0
+    },
+    {
+      "date": "2018-04-01",
+      "supplied": 1537575.0,
+      "official": 1544248.0
+    },
+    {
+      "date": "2018-05-01",
+      "supplied": 1538618.0,
+      "official": 1470891.0
+    },
+    {
+      "date": "2018-06-01",
+      "supplied": 1566298.0,
+      "official": 1544679.0
+    },
+    {
+      "date": "2018-07-01",
+      "supplied": 1530173.0,
+      "official": 1732896.0
+    },
+    {
+      "date": "2018-08-01",
+      "supplied": 1560404.0,
+      "official": 1683122.0
+    },
+    {
+      "date": "2018-09-01",
+      "supplied": 1575281.0,
+      "official": 1415149.0
+    },
+    {
+      "date": "2018-10-01",
+      "supplied": 1551782.0,
+      "official": 1467380.0
+    },
+    {
+      "date": "2018-11-01",
+      "supplied": 1527695.0,
+      "official": 1406985.0
+    },
+    {
+      "date": "2018-12-01",
+      "supplied": 1536231.0,
+      "official": 1603217.0
+    },
+    {
+      "date": "2019-01-01",
+      "supplied": 1581363.0,
+      "official": 1624593.0
+    },
+    {
+      "date": "2019-02-01",
+      "supplied": 1542928.0,
+      "official": 1499051.0
+    },
+    {
+      "date": "2019-03-01",
+      "supplied": 1512145.0,
+      "official": 1564664.0
+    },
+    {
+      "date": "2019-04-01",
+      "supplied": 1603441.0,
+      "official": 1596724.0
+    },
+    {
+      "date": "2019-05-01",
+      "supplied": 1566316.0,
+      "official": 1487791.0
+    },
+    {
+      "date": "2019-06-01",
+      "supplied": 1558874.0,
+      "official": 1551847.0
+    },
+    {
+      "date": "2019-07-01",
+      "supplied": 1577079.0,
+      "official": 1802593.0
+    },
+    {
+      "date": "2019-08-01",
+      "supplied": 1617311.0,
+      "official": 1736102.0
+    },
+    {
+      "date": "2019-09-01",
+      "supplied": 1615072.0,
+      "official": 1463543.0
+    },
+    {
+      "date": "2019-10-01",
+      "supplied": 1616859.0,
+      "official": 1530479.0
+    },
+    {
+      "date": "2019-11-01",
+      "supplied": 1661014.0,
+      "official": 1533668.0
+    },
+    {
+      "date": "2019-12-01",
+      "supplied": 1664421.0,
+      "official": 1724961.0
+    },
+    {
+      "date": "2020-01-01",
+      "supplied": 1640606.0,
+      "official": 1688102.0
+    },
+    {
+      "date": "2020-02-01",
+      "supplied": 742043.0,
+      "official": 732966.0
+    },
+    {
+      "date": "2020-03-01",
+      "supplied": 226770.0,
+      "official": 240001.0
+    },
+    {
+      "date": "2020-04-01",
+      "supplied": 766.0,
+      "official": 750.0
+    },
+    {
+      "date": "2020-05-01",
+      "supplied": 882.0,
+      "official": 880.0
+    },
+    {
+      "date": "2020-06-01",
+      "supplied": 2330.0,
+      "official": 2171.0
+    },
+    {
+      "date": "2020-07-01",
+      "supplied": 5953.0,
+      "official": 6843.0
+    },
+    {
+      "date": "2020-08-01",
+      "supplied": 8249.0,
+      "official": 8912.0
+    },
+    {
+      "date": "2020-09-01",
+      "supplied": 10550.0,
+      "official": 9500.0
+    },
+    {
+      "date": "2020-10-01",
+      "supplied": 14188.0,
+      "official": 13399.0
+    },
+    {
+      "date": "2020-11-01",
+      "supplied": 16031.0,
+      "official": 14749.0
+    },
+    {
+      "date": "2020-12-01",
+      "supplied": 23601.0,
+      "official": 24170.0
+    },
+    {
+      "date": "2021-01-01",
+      "supplied": 24267.0,
+      "official": 23366.0
+    },
+    {
+      "date": "2021-02-01",
+      "supplied": 18662.0,
+      "official": 18141.0
+    },
+    {
+      "date": "2021-03-01",
+      "supplied": 26543.0,
+      "official": 27202.0
+    },
+    {
+      "date": "2021-04-01",
+      "supplied": 26757.0,
+      "official": 25737.0
+    },
+    {
+      "date": "2021-05-01",
+      "supplied": 13837.0,
+      "official": 14190.0
+    },
+    {
+      "date": "2021-06-01",
+      "supplied": 10178.0,
+      "official": 10029.0
+    },
+    {
+      "date": "2021-07-01",
+      "supplied": 15623.0,
+      "official": 18517.0
+    },
+    {
+      "date": "2021-08-01",
+      "supplied": 14742.0,
+      "official": 15887.0
+    },
+    {
+      "date": "2021-09-01",
+      "supplied": 20949.0,
+      "official": 19009.0
+    },
+    {
+      "date": "2021-10-01",
+      "supplied": 25520.0,
+      "official": 24006.0
+    },
+    {
+      "date": "2021-11-01",
+      "supplied": 44868.0,
+      "official": 41179.0
+    },
+    {
+      "date": "2021-12-01",
+      "supplied": 91601.0,
+      "official": 92796.0
+    },
+    {
+      "date": "2022-01-01",
+      "supplied": 58101.0,
+      "official": 57174.0
+    },
+    {
+      "date": "2022-02-01",
+      "supplied": 69427.0,
+      "official": 67765.0
+    },
+    {
+      "date": "2022-03-01",
+      "supplied": 116971.0,
+      "official": 121207.0
+    },
+    {
+      "date": "2022-04-01",
+      "supplied": 307192.0,
+      "official": 295095.0
+    },
+    {
+      "date": "2022-05-01",
+      "supplied": 424578.0,
+      "official": 418458.0
+    },
+    {
+      "date": "2022-06-01",
+      "supplied": 567870.0,
+      "official": 543733.0
+    },
+    {
+      "date": "2022-07-01",
+      "supplied": 620447.0,
+      "official": 726739.0
+    },
+    {
+      "date": "2022-08-01",
+      "supplied": 679214.0,
+      "official": 728744.0
+    },
+    {
+      "date": "2022-09-01",
+      "supplied": 842506.0,
+      "official": 782215.0
+    },
+    {
+      "date": "2022-10-01",
+      "supplied": 863327.0,
+      "official": 816833.0
+    },
+    {
+      "date": "2022-11-01",
+      "supplied": 893231.0,
+      "official": 816340.0
+    },
+    {
+      "date": "2022-12-01",
+      "supplied": 918340.0,
+      "official": 931337.0
+    },
+    {
+      "date": "2023-01-01",
+      "supplied": 919120.0,
+      "official": 931814.0
+    },
+    {
+      "date": "2023-02-01",
+      "supplied": 988791.0,
+      "official": 957844.0
+    },
+    {
+      "date": "2023-03-01",
+      "supplied": 976969.0,
+      "official": 1021040.0
+    },
+    {
+      "date": "2023-04-01",
+      "supplied": 1130134.0,
+      "official": 1128610.0
+    },
+    {
+      "date": "2023-05-01",
+      "supplied": 1177818.0,
+      "official": 1112512.0
+    },
+    {
+      "date": "2023-06-01",
+      "supplied": 1171920.0,
+      "official": 1129310.0
+    },
+    {
+      "date": "2023-07-01",
+      "supplied": 1197020.0,
+      "official": 1419642.0
+    },
+    {
+      "date": "2023-08-01",
+      "supplied": 1211585.0,
+      "official": 1312693.0
+    },
+    {
+      "date": "2023-09-01",
+      "supplied": 1214558.0,
+      "official": 1130762.0
+    },
+    {
+      "date": "2023-10-01",
+      "supplied": 1191217.0,
+      "official": 1125964.0
+    },
+    {
+      "date": "2023-11-01",
+      "supplied": 1212942.0,
+      "official": 1100459.0
+    },
+    {
+      "date": "2023-12-01",
+      "supplied": 1222485.0,
+      "official": 1231565.0
+    },
+    {
+      "date": "2024-01-01",
+      "supplied": 1439569.0,
+      "official": 1419956.0
+    },
+    {
+      "date": "2024-02-01",
+      "supplied": 1436562.0,
+      "official": 1417807.0
+    },
+    {
+      "date": "2024-03-01",
+      "supplied": 1403706.0,
+      "official": 1464865.0
+    },
+    {
+      "date": "2024-04-01",
+      "supplied": 1350161.0,
+      "official": 1343319.0
+    },
+    {
+      "date": "2024-05-01",
+      "supplied": 1346214.0,
+      "official": 1277160.0
+    },
+    {
+      "date": "2024-06-01",
+      "supplied": 1297310.0,
+      "official": 1250293.0
+    },
+    {
+      "date": "2024-07-01",
+      "supplied": 1348400.0,
+      "official": 1602603.0
+    },
+    {
+      "date": "2024-08-01",
+      "supplied": 1410318.0,
+      "official": 1539828.0
+    },
+    {
+      "date": "2024-09-01",
+      "supplied": 1362487.0,
+      "official": 1270681.0
+    },
+    {
+      "date": "2024-10-01",
+      "supplied": 1391735.0,
+      "official": 1314493.0
+    },
+    {
+      "date": "2024-11-01",
+      "supplied": 1368859.0,
+      "official": 1234698.0
+    },
+    {
+      "date": "2024-12-01",
+      "supplied": 1387147.0,
+      "official": 1390641.0
+    }
+  ],
+  "checked_at": "2026-10-07",
+  "source_table": "M550241",
+  "series_no": "1",
+  "series_name": "Total",
+  "unit": "Number",
+  "source_url": "https://tablebuilder.singstat.gov.sg/table/TS/M550241",
+  "source_api": "https://tablebuilder.singstat.gov.sg/api/table/tabledata/M550241",
+  "source_last_updated": "2026-10-05",
+  "comparison": "Exact numeric equality between supplied monthly arrivals and current publisher Total series; historical revisions and transformations not reconciled."
+}

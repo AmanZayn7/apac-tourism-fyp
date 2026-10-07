@@ -58,3 +58,16 @@ Notebook reproduction additionally requires `python -m pip install -r requiremen
 ## Reproduction environment and serving compatibility
 
 The release bundle is reproduced on macOS arm64; Linux refitting produces different tree-model values. Website startup does not refit and uses the committed bundle unchanged. See [measured runtime comparison](RUNTIME_REPRODUCTION.md). CI verifies these two responsibilities on their respective platforms. Protobuf is pinned to 5.29.6 to respect Community Cloud's currently documented below-6 range; Python/runtime checks still apply before deployment.
+
+## This repository's hosting settings
+
+- Repository: `AmanZayn7/apac-tourism-fyp`
+- Branch: `main`
+- Entrypoint: `streamlit_app.py`
+- Python: **3.11** in Advanced settings
+- Secrets: none required by this application
+- Access: retain a private review deployment while dataset reuse and preprocessing documentation are incomplete
+
+Sign in at https://share.streamlit.io using the project owner's GitHub account, grant access to the private repository, and choose Create app. A private repository can be deployed without making its source public. Review the app's viewer access settings explicitly before sharing its URL. The source references do not by themselves verify the preprocessed target data; consult `DATA.md`.
+
+The Codex browser-control tool failed to initialize in this session, so provider sign-in, repository authorization and the Create app submission require the owner to complete those steps in their browser. No live hosting deployment is claimed by the GitHub verification record.

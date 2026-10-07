@@ -6,7 +6,7 @@ Explore monthly visitor arrivals for Singapore, Hong Kong, and a Bangkok-labelle
 
 **7 October revision:** the main dashboard now shows exactly twelve predicted months, with matching integer arrival values in cards, charts and exports. A jade, coral, indigo and gold theme combines original city skyline artwork with clearer controls. All nine notebooks have corrected, executed counterparts in [notebooks](notebooks/README.md), alongside the unchanged originals and the [original-code audit](docs/NOTEBOOK_AUDIT.md). XGBoost now participates in the same deployment and validation protocol. See the [latest verification](docs/UPDATE_2026-10-07.md).
 
-The supplied observations cover January 2015–December 2024. The included outlook is **January–December 2025**, generated from that historical snapshot. It is not a live 2026 forecast. The owner-confirmed arrivals sources are recorded in [data notes](docs/DATA.md). The Thailand source covers national arrivals rather than Bangkok alone; CSV reconciliation, preparation history and public redistribution terms remain incomplete.
+The supplied observations cover January 2015–December 2024. The included outlook is **January–December 2025**, generated from that historical snapshot. It is not a live 2026 forecast. The owner-confirmed arrivals sources are recorded in [data notes](docs/DATA.md). The Thailand source covers national arrivals rather than Bangkok alone; The owner confirmed that Singapore arrival values were preprocessed; all 120 supplied values differ from the current official Total series. Exact preprocessing steps and public redistribution terms remain to be documented; results describe the supplied preprocessed research dataset.
 
 ## Run locally
 

@@ -94,6 +94,13 @@ if date.today() > end.date():
         unsafe_allow_html=True,
     )
 st.caption(CITIES[city]["note"])
+if city == "Singapore":
+    st.warning(
+        "Research data: Singapore arrival values were transformed during preprocessing, "
+        "as confirmed by the project owner. All 120 values differ from the current SingStat "
+        "Total series. Exact transformation steps remain to be documented; forecasts and "
+        "scores describe the supplied preprocessed dataset."
+    )
 forecast_tab, compare_tab, evidence_tab = st.tabs(
     ["12-month forecast", "Compare forecasts", "Model evidence"]
 )
@@ -234,6 +241,14 @@ with evidence_tab:
             config=CONFIG,
             key="validation_ranking",
         )
+    with st.expander("Arrivals source references"):
+        st.markdown("""
+- **Singapore:** [SingStat table M550241](https://tablebuilder.singstat.gov.sg/table/TS/M550241), International Visitor Arrivals By A) Sex And B) Age Group, Monthly; provider Singapore Tourism Board. [Singapore Open Data Licence](https://data.gov.sg/open-data-licence). Reference checked 7 October 2026; original download date is unknown. The supplied targets differ from the current Total series.
+- **Hong Kong:** [Hong Kong Tourism Board tourism statistics](https://www.discoverhongkong.com/eng/hktb/newsroom/tourism-statistics.html). Historical export and filling methods remain undocumented; redistribution terms require confirmation.
+- **Thailand proxy:** [Bank of Thailand report 875](https://app.bot.or.th/BTWS_STAT/statistics/ReportPage.aspx?reportID=875&language=eng), sourced from the Ministry of Tourism and Sports. Publisher arrivals cover Thailand nationally and are reported in thousands; the supplied CSV conversion remains unreconciled.
+
+The owner identified these source references. This does not certify that the supplied files reproduce the publisher data. Forecasts and transformations are this project's research and are not endorsed by the publishers.
+""")
     with st.expander("Method and limitations"):
         st.markdown("""
 - **One shared forecasting implementation:** the corrected notebooks and deployed artifacts use the same date validation, features, models and multi-step evaluation.
