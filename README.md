@@ -6,7 +6,7 @@ Explore monthly visitor arrivals for Singapore, Hong Kong, and a Bangkok-labelle
 
 **7 October revision:** the main dashboard now shows exactly twelve predicted months, with matching integer arrival values in cards, charts and exports. A jade, coral, indigo and gold theme combines original city skyline artwork with clearer controls. All nine notebooks have corrected, executed counterparts in [notebooks](notebooks/README.md), alongside the unchanged originals and the [original-code audit](docs/NOTEBOOK_AUDIT.md). XGBoost now participates in the same deployment and validation protocol. See the [latest verification](docs/UPDATE_2026-10-07.md).
 
-The supplied observations cover January 2015–December 2024. The included outlook is **January–December 2025**, generated from that historical snapshot. It is not a live 2026 forecast. Data provenance and Bangkok's geographic coverage remain unverified; see [data notes](docs/DATA.md).
+The supplied observations cover January 2015–December 2024. The included outlook is **January–December 2025**, generated from that historical snapshot. It is not a live 2026 forecast. The owner-confirmed arrivals sources are recorded in [data notes](docs/DATA.md). The Thailand source covers national arrivals rather than Bangkok alone; CSV reconciliation, preparation history and public redistribution terms remain incomplete.
 
 ## Run locally
 
@@ -84,3 +84,9 @@ legacy/                Original application, saved results, and nine notebooks
 ```
 
 See [methodology](docs/METHODOLOGY.md) for exact folds and model settings and [architecture](docs/ARCHITECTURE.md) for the build/serve boundary. The archived virtual environment and 240 MB duplicate ZIP were deliberately excluded; the original Downloads folder remains unchanged.
+
+## Source references and release status
+
+The project owner confirmed arrivals references from [SingStat](https://tablebuilder.singstat.gov.sg/table/TS/M550241), [Hong Kong Tourism Board](https://www.discoverhongkong.com/eng/hktb/newsroom/tourism-statistics.html), and [Bank of Thailand report 875](https://app.bot.or.th/BTWS_STAT/statistics/ReportPage.aspx?reportID=875&language=eng). These identify the reported sources; they do not certify the preparation of the supplied CSVs. See [data provenance and reuse notes](docs/DATA.md).
+
+The first remote Linux check passed dependency installation/consistency, lint, formatting, artifact freshness and the supplied test suite, but failed notebook-to-bundle numerical reconciliation. The audit and Docker steps were consequently skipped. A successful complete release check is still required; see [remote verification](docs/REMOTE_VERIFICATION_2026-10-07.md).
