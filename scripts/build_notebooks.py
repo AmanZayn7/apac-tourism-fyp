@@ -148,7 +148,7 @@ if score.r2 < 0:
     print("Negative R²: worse squared error than the holdout mean; this is not hidden or relabelled as accuracy.")
 """),
         md(
-            "## Twelve-month forecast and deployment reconciliation\n\nThe ML recursion has a disclosed numerical bound of 0–2× the training maximum. This is an operational heuristic, not a domain-derived physical limit; affected months are flagged. Error reference bands pool 72 validation errors (finite-sample 80% order statistic). They are **not calibrated prediction intervals**: dependence, selection and regime changes invalidate a guaranteed coverage claim. Main plots show point estimates only.\n\nThe deployment bundle was built on macOS, while CI uses Linux. Tree implementations may produce slightly different floating-point results across those environments, even with fixed seeds and one worker. Reconciliation therefore allows up to 0.1% relative difference for RF/XGBoost monthly forecasts and 1% for their validation MAEs. The latter is a diagnostic tolerance for error scores, not a claim about forecasting accuracy. Naïve, seasonal naïve and Ridge keep strict tolerances. All models must still have identical dates and the same validation-selected winner."
+            "## Twelve-month forecast and deployment reconciliation\n\nThe ML recursion has a disclosed numerical bound of 0–2× the training maximum. This is an operational heuristic, not a domain-derived physical limit; affected months are flagged. Error reference bands pool 72 validation errors (finite-sample 80% order statistic). They are **not calibrated prediction intervals**: dependence, selection and regime changes invalidate a guaranteed coverage claim. Main plots show point estimates only.\n\nThe published bundle is reproduced on macOS arm64 with the pinned numerical libraries and Python 3.11. Linux retraining was measured separately and produces materially different tree-model results despite fixed seeds. CI therefore checks notebook reproduction on macOS arm64 at rtol=1e-8 for every model, and verifies Linux serving of the unchanged published bundle in the actual container. Linux retraining is a different numerical experiment, not certified as equivalent to this release. All models must have identical dates and the same validation-selected winner. See docs/RUNTIME_REPRODUCTION.md for the measured comparison."
         ),
         code("""outlook, summary = forecast_view(result["outlook"], focus_choice, result["data_end"])
 display(outlook[["date", "forecast", "forecast_arrivals", "guardrail_applied"]])
@@ -171,9 +171,8 @@ assert result["selected_model"] == published["selected_model"]
 for candidate in CANDIDATES:
     computed, _ = forecast_view(result["outlook"], candidate, result["data_end"])
     deployed, _ = forecast_view(published["outlook"], candidate, published["data_end"])
-    tree_model = candidate in ("rf", "xgb")
-    forecast_rtol = 1e-3 if tree_model else 1e-8
-    score_rtol = 1e-2 if tree_model else 1e-8
+    forecast_rtol = 1e-8
+    score_rtol = 1e-8
     np.testing.assert_allclose(computed.forecast, deployed.forecast, rtol=forecast_rtol, atol=1e-5)
     assert computed.date.equals(deployed.date)
     for key in ("validation_mae",):

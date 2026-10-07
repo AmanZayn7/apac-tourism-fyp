@@ -54,3 +54,7 @@ No public deployment was attempted: there is no configured Git remote or authent
 `requirements.txt` uses XGBoost 3.2.0 and its smaller CPU-only distribution on Linux x86_64; other platforms use the standard distribution. No GPU is used. The Dockerfile installs `libgomp1` for its native runtime. On macOS, a discoverable OpenMP library is needed for training; `brew install libomp` is the normal setup. This local verification used the already-installed `/opt/anaconda3/lib/libomp.dylib` with `DYLD_FALLBACK_LIBRARY_PATH=/opt/anaconda3/lib` for model execution. That machine-specific path is not embedded in application code. [Official XGBoost installation guidance](https://xgboost.readthedocs.io/en/stable/install.html).
 
 Notebook reproduction additionally requires `python -m pip install -r requirements-notebooks.txt`, then `python scripts/build_notebooks.py --execute` after rebuilding artifacts. Notebook tooling is deliberately excluded from the serving image. Artifact building records the XGBoost version alongside other numerical-library versions.
+
+## Reproduction environment and serving compatibility
+
+The release bundle is reproduced on macOS arm64; Linux refitting produces different tree-model values. Website startup does not refit and uses the committed bundle unchanged. See [measured runtime comparison](RUNTIME_REPRODUCTION.md). CI verifies these two responsibilities on their respective platforms. Protobuf is pinned to 5.29.6 to respect Community Cloud's currently documented below-6 range; Python/runtime checks still apply before deployment.
