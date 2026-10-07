@@ -1,0 +1,234 @@
+{
+  "original_folder": "ABDUL MUHAIMIN AMAN - TP069510 - APD3F2502CS(DA) - SOUCE CODE",
+  "files": [
+    {
+      "archive": "legacy/system/README.md",
+      "original_relative_path": "smart traveler insights system/README.md",
+      "sha256": "0933141445c4fd89fa15a7c303ec05332cb30a0a156208a7bf9245e9310b91a3",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/app/app.py",
+      "original_relative_path": "smart traveler insights system/app/app.py",
+      "sha256": "6894c5b5246208086472271d4419c94c0bce69fea8fcb8b9f0f9361b39346258",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/app/components.py",
+      "original_relative_path": "smart traveler insights system/app/components.py",
+      "sha256": "02d965dba755c72c1bb6f285a913f426b88e29923c361134e9da0ee86e88eec2",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/app/theme.css",
+      "original_relative_path": "smart traveler insights system/app/theme.css",
+      "sha256": "c0c4126857f3eac28f1245ef384e8d7e19c14d3aa41f8653d61aeb516b93d31c",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/data/bangkok_eval_2024.csv",
+      "original_relative_path": "smart traveler insights system/data/bangkok_eval_2024.csv",
+      "sha256": "a229cd74cdd1c832af1f4bde0c3ad052ec597e3803d94b87918764e41532bfe6",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/data/bangkok_metrics_2024.json",
+      "original_relative_path": "smart traveler insights system/data/bangkok_metrics_2024.json",
+      "sha256": "632def288dc475fc739cb807c49bf3d0810ce0ae052acbb59296e990d09a3836",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/data/bangkok_outlook_next12.csv",
+      "original_relative_path": "smart traveler insights system/data/bangkok_outlook_next12.csv",
+      "sha256": "f00148f3dc07363a1f136b9d4ebcdb59aa66be49c2a59e5e1ff5abe0a16e72c6",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/data/hongkong_eval_2024.csv",
+      "original_relative_path": "smart traveler insights system/data/hongkong_eval_2024.csv",
+      "sha256": "3e76ff264cf4cbac587bd17106978fe10e68b60022eb206ee43237a06e8bc9ec",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/data/hongkong_metrics_2024.json",
+      "original_relative_path": "smart traveler insights system/data/hongkong_metrics_2024.json",
+      "sha256": "57b2859aae89991577483fedbed44e8f5980312abbd06df4d823f5c2d322b4da",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/data/hongkong_outlook_next12.csv",
+      "original_relative_path": "smart traveler insights system/data/hongkong_outlook_next12.csv",
+      "sha256": "8892b5243e62030309cf7906044cf6f131f7589017eebcfb079a348577bd4642",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/data/singapore_eval_2024.csv",
+      "original_relative_path": "smart traveler insights system/data/singapore_eval_2024.csv",
+      "sha256": "74f2d9a173dee5a5274d4ea70331aa3a4306bac6993c8454f4326e928dcf1781",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/data/singapore_metrics_2024.json",
+      "original_relative_path": "smart traveler insights system/data/singapore_metrics_2024.json",
+      "sha256": "c5b38b80c0cf59fd23a7ec398e1249cfc06f7c9f345541682771b582c6558545",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/data/singapore_outlook_next12.csv",
+      "original_relative_path": "smart traveler insights system/data/singapore_outlook_next12.csv",
+      "sha256": "4b5fc45eee231d222a363dce22ec017d89013ba6722a2c0baa35429571027b7f",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/raw/bangkok_2015_2024_final.csv",
+      "original_relative_path": "smart traveler insights system/raw/bangkok_2015_2024_final.csv",
+      "sha256": "dd685f06fbe662d97f1cb4d330fe91ce3d800dfd9e998f3bdc0468b2460345f7",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/raw/hongkong_2015_2024_final_filled.csv",
+      "original_relative_path": "smart traveler insights system/raw/hongkong_2015_2024_final_filled.csv",
+      "sha256": "a975b819b6364aa95a321929129429bedee49c7f0952196cf5cefe40ff1ccba2",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/raw/singapore_2015_2024_final.csv",
+      "original_relative_path": "smart traveler insights system/raw/singapore_2015_2024_final.csv",
+      "sha256": "93c588808a605c9b2f73167cb731e7d06b5d4c72027c3a991deab1f239b16d39",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/requirements.txt",
+      "original_relative_path": "smart traveler insights system/requirements.txt",
+      "sha256": "3577825d0d7b5f4f6c18183f04ff386fc24c17209a3ee9ea505b6999c56c84b2",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/stis/__init__.py",
+      "original_relative_path": "smart traveler insights system/stis/__init__.py",
+      "sha256": "46c4ea1749a6ff0f6e6caff3f3303d9c228450a9e3e33f2953f315b94b9ab362",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/stis/build_artifacts.py",
+      "original_relative_path": "smart traveler insights system/stis/build_artifacts.py",
+      "sha256": "5aae502f921e0e3361e0ea4a1bf67a829b7be9acbddc6a41c40d6c9131eb3adc",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/stis/config.py",
+      "original_relative_path": "smart traveler insights system/stis/config.py",
+      "sha256": "050da2c33f7e581879b656496a1272a9ce2cee7e36b4730df2e1199a16d400cb",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/stis/evaluate.py",
+      "original_relative_path": "smart traveler insights system/stis/evaluate.py",
+      "sha256": "b002aed2abb788438247594eedc604043693385d4e4270c462d26f4b21ab9d6e",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/stis/features.py",
+      "original_relative_path": "smart traveler insights system/stis/features.py",
+      "sha256": "5e0678518e5b24b696672bbee5cf60fe47eb9ff32d51b5c472ecda16e4fb326c",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/stis/forecast.py",
+      "original_relative_path": "smart traveler insights system/stis/forecast.py",
+      "sha256": "fdad9789841ccba4c3614abb3c63e45ecc1b40d9a2acf6159a6c968efa1c1da0",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/stis/io.py",
+      "original_relative_path": "smart traveler insights system/stis/io.py",
+      "sha256": "ac74d92eceacabe277da1f4051c7c07a03eade48f9e846f5e42402ef77a39688",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/stis/models/__init__.py",
+      "original_relative_path": "smart traveler insights system/stis/models/__init__.py",
+      "sha256": "3d916bc6e11fd9eaf5d38fc63087fff4d99ebcf7bdc89215201be5d3ec590df2",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/stis/models/rf.py",
+      "original_relative_path": "smart traveler insights system/stis/models/rf.py",
+      "sha256": "ee8106280d4d8296f1fb4afdd8f48c8ab0aed75933c83754f94cb87e932fc746",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/stis/models/ridge.py",
+      "original_relative_path": "smart traveler insights system/stis/models/ridge.py",
+      "sha256": "08ba40d0496f928018656278d77cb81d414c9c8d3570e3b5671d27d6ef253302",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/system/stis/models/snaive.py",
+      "original_relative_path": "smart traveler insights system/stis/models/snaive.py",
+      "sha256": "9d8e3e4b46225a2dcfb6f29c42d769bb6b1b66304c129689b8468f810b4fa05a",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/notebooks/BANGKOK RIDGE LOG (5).ipynb",
+      "original_relative_path": "BANGKOK RIDGE LOG (5).ipynb",
+      "sha256": "414b1711542c384e31603d8eb238d074af931092dcab841ac5ef63dfcb44eb1f",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/notebooks/BKK SN (4).ipynb",
+      "original_relative_path": "BKK SN (4).ipynb",
+      "sha256": "8b013f8ed28f308a89232cec7114871187501a3b4ac054b1a58b99f5731dddfc",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/notebooks/HK RF (3).ipynb",
+      "original_relative_path": "HK RF (3).ipynb",
+      "sha256": "f8c8c4e998988ef567f814e0cda990de947be532256a561752ec8aa050ab4bcc",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/notebooks/HK RF AND XGB (4).ipynb",
+      "original_relative_path": "HK RF AND XGB (4).ipynb",
+      "sha256": "f8d8b2458b260302bc2df1d8f4c885665f724393dac03f57e05e93eee523e171",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/notebooks/HK SN (5).ipynb",
+      "original_relative_path": "HK SN (5).ipynb",
+      "sha256": "133563f7bc71220d03af8967ee79fab5f522a9e8b5041f42fc5d37766ff6a00b",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/notebooks/HONG KONG RIDGE LOG (4).ipynb",
+      "original_relative_path": "HONG KONG RIDGE LOG (4).ipynb",
+      "sha256": "c9019c66591d99e6590eba484cceaad0f9b26ee4dfc16af3ba9b3bf76030889c",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/notebooks/RF BANGKOK (3).ipynb",
+      "original_relative_path": "RF BANGKOK (3).ipynb",
+      "sha256": "9b3275abc1df9b1b6107f6d51ecb1f52cb4374463863280a746ff1cb74d8d16e",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/notebooks/RF SINGAPORE (4).ipynb",
+      "original_relative_path": "RF SINGAPORE (4).ipynb",
+      "sha256": "3b0c1607faf2b7fabf4a82481ae841d8a889d2a39f4ef5ce05723ffa3e075914",
+      "byte_identical": true
+    },
+    {
+      "archive": "legacy/notebooks/SG RF AND XGB (5).ipynb",
+      "original_relative_path": "SG RF AND XGB (5).ipynb",
+      "sha256": "5b802c70efaf36dba1da5d6e69e95ad54c5658a44d8815af0469dedd1f3979e1",
+      "byte_identical": true
+    }
+  ],
+  "preserved_files": 37,
+  "omitted": [
+    "traveler virtual environment",
+    "duplicate ZIP",
+    ".DS_Store",
+    "__pycache__"
+  ]
+}

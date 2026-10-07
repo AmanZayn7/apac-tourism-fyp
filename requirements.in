@@ -1,0 +1,10 @@
+# Direct runtime dependencies. requirements.txt pins the tested transitive closure.
+numpy==2.4.6
+pandas==2.3.3
+scikit-learn==1.9.1
+streamlit==1.64.0
+plotly==6.9.0
+
+# CPU-only Linux x86_64 package avoids unnecessary GPU dependencies.
+xgboost-cpu==3.2.0; platform_system == "Linux" and platform_machine == "x86_64"
+xgboost==3.2.0; platform_system != "Linux" or platform_machine != "x86_64"

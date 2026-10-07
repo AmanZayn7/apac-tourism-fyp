@@ -1,0 +1,45 @@
+{
+  "ridge_calendar": {
+    "target": "2023-01-01",
+    "lag1_source": "2019-12-01",
+    "lag12_source": "2019-01-01"
+  },
+  "ridge_current_target_leak": {
+    "roll3_change_when_current_target_doubled": 0.2310490601866455
+  },
+  "bangkok_yoy": {
+    "infinite_dates": [
+      "2021-04-01",
+      "2021-05-01",
+      "2021-06-01",
+      "2021-07-01",
+      "2021-08-01",
+      "2021-09-01"
+    ],
+    "nan_count": 12,
+    "finite_99pct": 10169.268753038396,
+    "original_99pct": "nan"
+  },
+  "full_series_winsorization": {
+    "original_q99": 61124.4241988924,
+    "q99_after_only_test_targets_changed": 1000000000.0,
+    "training_values_changed": 2
+  },
+  "exogenous_enabled_True": {
+    "selected_exogenous_columns": [
+      "hotel_occupancy",
+      "google_trends",
+      "hotel_occupancy_log",
+      "hotel_occupancy_lag1",
+      "google_trends_log",
+      "google_trends_lag1"
+    ]
+  },
+  "exogenous_enabled_False": {
+    "selected_exogenous_columns": [
+      "hotel_occupancy",
+      "google_trends"
+    ]
+  },
+  "singapore_required_input_in_supplied_folder": false
+}

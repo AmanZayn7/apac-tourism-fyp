@@ -1,0 +1,158 @@
+CELL 1 [code] execution_count=1
+001: # ================================
+002: # Singapore — RF & XGB (log-arrivals)
+003: # ================================
+004: import pandas as pd
+005: import numpy as np
+006: from sklearn.ensemble import RandomForestRegressor
+007: from xgboost import XGBRegressor
+008: from sklearn.metrics import r2_score, mean_absolute_error
+009: from math import sqrt
+010: 
+011: # ------- 1) Load data -------
+012: # Expect columns: date, visitor_arrivals, (optional) hotel_occupancy, google_trends
+013: df_sg = pd.read_csv("singapore_with_recovery_index.csv", parse_dates=["date"])
+014: 
+015: # ------- 2) Feature builder (standardized) -------
+016: def build_features(df, use_exogenous=True):
+017:     d = df.copy()
+018:     d = d.sort_values("date").reset_index(drop=True)
+019:     d["date"] = pd.to_datetime(d["date"])
+020:     d = d.set_index("date").asfreq("MS")
+021: 
+022:     # Target (log1p to be safe even if small values appear)
+023:     d["log_arrivals"] = np.log1p(d["visitor_arrivals"])
+024: 
+025:     # Lags
+026:     for L in [1, 3, 6, 12]:
+027:         d[f"log_lag{L}"] = d["log_arrivals"].shift(L)
+028: 
+029:     # Rolling means (SHIFTED to avoid leakage)
+030:     d["log_roll3"] = d["log_arrivals"].rolling(3).mean().shift(1)
+031:     d["log_roll6"] = d["log_arrivals"].rolling(6).mean().shift(1)
+032: 
+033:     # Month dummies
+034:     d["month"] = d.index.month
+035:     month_dummies = pd.get_dummies(d["month"], prefix="m", drop_first=True)
+036:     d = pd.concat([d, month_dummies], axis=1)
+037: 
+038:     # Optional exogenous (log1p + lag1)
+039:     if use_exogenous:
+040:         for col in ["hotel_occupancy", "google_trends"]:
+041:             if col in d.columns:
+042:                 d[f"{col}_log"] = np.log1p(pd.to_numeric(d[col], errors="coerce"))
+043:                 d[f"{col}_lag1"] = d[f"{col}_log"].shift(1)
+044: 
+045:     return d
+046: 
+047: # ------- 3) Train / Test split -------
+048: def train_test_split_std(d):
+049:     mask_train = ((d.index.year >= 2017) & (d.index.year <= 2019)) | (d.index.year == 2023)
+050:     mask_test  = (d.index.year == 2024)
+051:     train = d.loc[mask_train].dropna()
+052:     test  = d.loc[mask_test].dropna()
+053:     return train, test
+054: 
+055: # ------- 4) Metrics (in arrivals space) -------
+056: def evaluate(name, y_true, y_pred):
+057:     r2   = r2_score(y_true, y_pred)
+058:     mae  = mean_absolute_error(y_true, y_pred)
+059:     rmse = sqrt(np.mean((y_true - y_pred)**2))
+060:     mape = float(np.mean(np.abs((y_true - y_pred) / y_true)) * 100)
+061:     print(f"\n{name}")
+062:     print(f"R²   : {r2:.3f}")
+063:     print(f"MAE  : {mae:,.0f}")
+064:     print(f"RMSE : {rmse:,.0f}")
+065:     print(f"MAPE : {mape:.2f}%")
+066:     return {"R2": r2, "MAE": mae, "RMSE": rmse, "MAPE": mape}
+067: 
+068: # ------- 5) Build features, split, train, evaluate -------
+069: d = build_features(df_sg, use_exogenous=True)
+070: train, test = train_test_split_std(d)
+071: 
+072: feature_cols = [c for c in train.columns if c.startswith(("log_lag","log_roll","m_","hotel","google"))]
+073: target_col = "log_arrivals"
+074: 
+075: X_train, y_train = train[feature_cols], train[target_col]
+076: X_test,  y_test  = test[feature_cols],  test[target_col]
+077: 
+078: # Models
+079: rf = RandomForestRegressor(
+080:     n_estimators=600, max_depth=None, min_samples_leaf=2,
+081:     random_state=42, n_jobs=-1
+082: ).fit(X_train, y_train)
+083: 
+084: xgb = XGBRegressor(
+085:     n_estimators=600, learning_rate=0.05, max_depth=4,
+086:     subsample=0.9, colsample_bytree=0.9, random_state=42
+087: ).fit(X_train, y_train)
+088: 
+089: # Invert log1p to evaluate in arrivals space
+090: def inv(y_log): return np.expm1(y_log)
+091: 
+092: y_true = inv(y_test)
+093: y_rf   = inv(rf.predict(X_test))
+094: y_xgb  = inv(xgb.predict(X_test))
+095: 
+096: m_rf  = evaluate("Random Forest (log-arrivals)", y_true, y_rf)
+097: m_xgb = evaluate("XGBoost (log-arrivals)",      y_true, y_xgb)
+098: 
+099: # ------- 6) Month-by-month table (2024) -------
+100: out = pd.DataFrame({
+101:     "date": X_test.index,
+102:     "actual": y_true.round().astype(int),
+103:     "rf_pred": np.round(y_rf).astype(int),
+104:     "xgb_pred": np.round(y_xgb).astype(int),
+105: })
+106: out["rf_abs_err"]  = (out["actual"] - out["rf_pred"]).abs()
+107: out["rf_ape_%"]    = (out["rf_abs_err"] / out["actual"] * 100).round(2)
+108: out["xgb_abs_err"] = (out["actual"] - out["xgb_pred"]).abs()
+109: out["xgb_ape_%"]   = (out["xgb_abs_err"] / out["actual"] * 100).round(2)
+110: 
+111: print("\n=== 2024 month-by-month — Singapore ===")
+112: print(out.set_index("date"))
+SAVED OUTPUT: 
+Random Forest (log-arrivals)
+R²   : -4.850
+MAE  : 70,276
+RMSE : 95,456
+MAPE : 5.04%
+
+XGBoost (log-arrivals)
+R²   : -7.883
+MAE  : 104,926
+RMSE : 117,628
+MAPE : 7.56%
+
+=== 2024 month-by-month — Singapore ===
+             actual  rf_pred  xgb_pred  rf_abs_err  rf_ape_%  xgb_abs_err  \
+date                                                                        
+2024-01-01  1439569  1205982   1203961      233587     16.23       235608   
+2024-02-01  1436562  1268328   1367204      168234     11.71        69358   
+2024-03-01  1403706  1307979   1381952       95727      6.82        21754   
+2024-04-01  1350161  1381276   1260981       31115      2.30        89180   
+2024-05-01  1346214  1398739   1272642       52525      3.90        73572   
+2024-06-01  1297310  1383042   1253456       85732      6.61        43854   
+2024-07-01  1348400  1371825   1261316       23425      1.74        87084   
+2024-08-01  1410318  1419662   1265102        9344      0.66       145216   
+2024-09-01  1362487  1410037   1240739       47550      3.49       121748   
+2024-10-01  1391735  1411086   1259442       19351      1.39       132293   
+2024-11-01  1368859  1410398   1261177       41539      3.03       107682   
+2024-12-01  1387147  1422330   1255384       35183      2.54       131763   
+
+            xgb_ape_%  
+date                   
+2024-01-01      16.37  
+2024-02-01       4.83  
+2024-03-01       1.55  
+2024-04-01       6.61  
+2024-05-01       5.47  
+2024-06-01       3.38  
+2024-07-01       6.46  
+2024-08-01      10.30  
+2024-09-01       8.94  
+2024-10-01       9.51  
+2024-11-01       7.87  
+2024-12-01       9.50  
+
+CELL 2 [code] execution_count=None

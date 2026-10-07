@@ -1,0 +1,40 @@
+name: Verify forecasting and dashboard
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m pip check
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: python -m stis.build_artifacts --check
+      - run: pytest -q
+      - name: Re-execute corrected notebooks against published forecasts
+        run: |
+          python -m pip install -r requirements-notebooks.txt
+          python scripts/build_notebooks.py --execute
+      - run: pip-audit -r requirements.txt
+      - name: Build and smoke-test container
+        run: |
+          docker build -t apac-tourism .
+          docker run -d --name tourism -p 8501:8501 apac-tourism
+          for attempt in $(seq 1 30); do
+            if curl --fail http://127.0.0.1:8501/_stcore/health; then
+              docker stop tourism
+              exit 0
+            fi
+            sleep 2
+          done
+          docker logs tourism
+          exit 1

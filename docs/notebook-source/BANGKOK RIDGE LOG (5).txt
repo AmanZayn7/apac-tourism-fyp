@@ -1,0 +1,154 @@
+CELL 1 [code] execution_count=13
+001: # ===== Bangkok / Thailand proxy — Ridge (log-arrivals) with lags/rolls + month dummies =====
+002: # Best-for-metrics configuration (R² target + low MAPE)
+003: 
+004: import pandas as pd, numpy as np, matplotlib.pyplot as plt
+005: from sklearn.linear_model import RidgeCV
+006: from sklearn.pipeline import Pipeline
+007: from sklearn.compose import ColumnTransformer
+008: from sklearn.preprocessing import StandardScaler, OneHotEncoder
+009: from sklearn.metrics import r2_score, mean_absolute_error
+010: from math import sqrt
+011: 
+012: # -----------------------------
+013: # 1) Load & normalize columns
+014: # -----------------------------
+015: df = pd.read_csv("/Users/aman/Downloads/bangkok_2015_2024_final.csv")
+016: 
+017: # Helper to find a column by keywords (case-insensitive)
+018: def find_col(cands):
+019:     lc = {c.lower(): c for c in df.columns}
+020:     for cand in cands:
+021:         for k, v in lc.items():
+022:             if cand in k:
+023:                 return v
+024:     return None
+025: 
+026: year_col   = find_col(["year"])
+027: month_col  = find_col(["month"])
+028: date_col   = find_col(["date","time period","time_period","period"])
+029: arr_col    = find_col(["arrival","arrivals","visitor"])
+030: occ_col    = find_col(["occupancy","occupancy rate","occ"])
+031: gt_col     = find_col(["google trends","google_trends","trends"])
+032: 
+033: assert arr_col is not None, "Could not find the arrivals column."
+034: 
+035: # Build a monthly date index
+036: if date_col is not None:
+037:     df[date_col] = pd.to_datetime(df[date_col], errors="coerce")
+038:     df = df.dropna(subset=[date_col]).sort_values(date_col).rename(columns={date_col: "date"})
+039: else:
+040:     assert (year_col is not None) and (month_col is not None), "Need either a date column or both year & month."
+041:     df["date"] = pd.to_datetime(df[year_col].astype(int).astype(str) + "-" +
+042:                                 df[month_col].astype(int).astype(str) + "-01", errors="coerce")
+043:     df = df.dropna(subset=["date"]).sort_values("date")
+044: 
+045: df = df.set_index("date").asfreq("MS")
+046: 
+047: # Keep only the columns we actually use
+048: keep_cols = [arr_col]
+049: if occ_col is not None: keep_cols.append(occ_col)
+050: if gt_col  is not None: keep_cols.append(gt_col)
+051: df = df[keep_cols].copy()
+052: 
+053: # -----------------------------
+054: # 2) Safe log target + filtering
+055: # -----------------------------
+056: df.index = pd.to_datetime(df.index)   # ensure datetime index
+057: mask = ((df.index.year >= 2016) & (df.index.year <= 2019)) | (df.index.year.isin([2023, 2024]))
+058: df = df.loc[mask].copy()
+059: 
+060: # Safe log: only positive arrivals -> log; others = NaN
+061: arr = pd.to_numeric(df[arr_col], errors="coerce")
+062: df["log_arrivals"] = np.where(arr > 0, np.log(arr), np.nan)
+063: 
+064: # -----------------------------
+065: # 3) Features: lags/rolls/month
+066: # -----------------------------
+067: for L in [1, 3, 6, 12]:
+068:     df[f"lag{L}"] = df["log_arrivals"].shift(L)
+069: 
+070: df["roll3"]  = df["log_arrivals"].rolling(3).mean()
+071: df["roll6"]  = df["log_arrivals"].rolling(6).mean()
+072: df["month"]  = df.index.month.astype("int8")
+073: 
+074: feature_cols_num = ["lag1","lag3","lag6","lag12","roll3","roll6"]
+075: feature_cols_cat = ["month"]
+076: target_col       = "log_arrivals"
+077: 
+078: df_mod = df.dropna(subset=feature_cols_num + [target_col]).copy()
+079: X = df_mod[feature_cols_num + feature_cols_cat]
+080: y = df_mod[target_col]
+081: 
+082: # -----------------------------
+083: # 4) Train / Test split
+084: # -----------------------------
+085: train_mask = ((df_mod.index.year >= 2016) & (df_mod.index.year <= 2019)) | (df_mod.index.year == 2023)
+086: test_mask  = (df_mod.index.year == 2024)
+087: 
+088: X_train, y_train = X.loc[train_mask], y.loc[train_mask]
+089: X_test,  y_test  = X.loc[test_mask],  y.loc[test_mask]
+090: 
+091: print(f"Train: {y_train.index.min().date()} → {y_train.index.max().date()} | rows = {len(y_train)}")
+092: print(f"Test : {y_test.index.min().date()}  → {y_test.index.max().date()} | rows = {len(y_test)}")
+093: 
+094: # -----------------------------
+095: # 5) Pipeline: scale + one-hot + RidgeCV
+096: # -----------------------------
+097: preproc = ColumnTransformer([
+098:     ("num", StandardScaler(), feature_cols_num),
+099:     ("cat", OneHotEncoder(drop="first", sparse_output=False), feature_cols_cat)
+100: ])
+101: 
+102: alphas = np.logspace(-3, 3, 25)  # 0.001 → 1000
+103: ridge = Pipeline([
+104:     ("pre", preproc),
+105:     ("model", RidgeCV(alphas=alphas, cv=None))
+106: ])
+107: 
+108: ridge.fit(X_train, y_train)
+109: 
+110: # -----------------------------
+111: # 6) Predict & evaluate (levels)
+112: # -----------------------------
+113: y_pred_log = ridge.predict(X_test)
+114: y_pred     = np.exp(y_pred_log)
+115: y_true     = np.exp(y_test)
+116: 
+117: def mape(y_true, y_pred):
+118:     return float((np.abs((y_true - y_pred)/y_true)*100).mean())
+119: 
+120: r2   = r2_score(y_true, y_pred)
+121: mae  = mean_absolute_error(y_true, y_pred)
+122: rmse = sqrt(np.mean((y_true - y_pred)**2))
+123: mape_val = mape(y_true, y_pred)
+124: 
+125: print("\nRidge — Bangkok (Best Config: lag1,3,6,12 + roll3,6 + month)")
+126: print(f"Chosen alpha: {ridge.named_steps['model'].alpha_:.6g}")
+127: print(f"R²   : {r2:.3f}")
+128: print(f"MAE  : {mae:,.0f}")
+129: print(f"RMSE : {rmse:,.0f}")
+130: print(f"MAPE : {mape_val:.2f}%")
+131: 
+132: # -----------------------------
+133: # 7) Plot
+134: # -----------------------------
+135: plt.figure(figsize=(10,5))
+136: plt.plot(y_true.index, y_true.values, label="Actual")
+137: plt.plot(y_true.index, y_pred, label="Predicted", linestyle="--", marker="o")
+138: plt.title("Bangkok / Thailand — Ridge Forecast (Test: 2024)")
+139: plt.ylabel("Visitor Arrivals")
+140: plt.legend()
+141: plt.tight_layout()
+142: plt.show()
+SAVED OUTPUT: Train: 2017-01-01 → 2023-12-01 | rows = 48
+Test : 2024-01-01  → 2024-12-01 | rows = 12
+
+Ridge — Bangkok (Best Config: lag1,3,6,12 + roll3,6 + month)
+Chosen alpha: 1.77828
+R²   : 0.859
+MAE  : 90,886
+RMSE : 115,048
+MAPE : 3.09%
+
+CELL 2 [code] execution_count=None

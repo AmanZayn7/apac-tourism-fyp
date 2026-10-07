@@ -1,0 +1,80 @@
+CELL 1 [code] execution_count=6
+001: # ======================================================
+002: # Hong Kong — Seasonal-Naive (Lag-12) Forecast
+003: # ======================================================
+004: import numpy as np
+005: import pandas as pd
+006: from math import sqrt
+007: from sklearn.metrics import r2_score, mean_absolute_error
+008: 
+009: # -----------------------------
+010: # 1) Load Data
+011: # -----------------------------
+012: CSV_PATH = "/Users/aman/Downloads/hongkong_2015_2024_final_filled.csv"
+013: df = pd.read_csv(CSV_PATH, parse_dates=["date"]).sort_values("date")
+014: df = df.set_index("date").asfreq("MS")
+015: 
+016: # Ensure numeric
+017: df["arrivals"] = pd.to_numeric(df["visitor_arrivals"], errors="coerce")
+018: 
+019: # -----------------------------
+020: # 2) Build Seasonal-Naive Forecast
+021: # -----------------------------
+022: # Lag-12 arrivals as prediction
+023: df["snaive"] = df["arrivals"].shift(12)
+024: 
+025: # Recovery-based split
+026: train_mask = ((df.index >= "2017-01-01") & (df.index <= "2019-12-01")) | \
+027:              ((df.index >= "2023-01-01") & (df.index <= "2024-08-01"))
+028: test_mask  =  (df.index >= "2024-09-01") & (df.index <= "2024-12-01")
+029: 
+030: y_true = df.loc[test_mask, "arrivals"]
+031: y_pred = df.loc[test_mask, "snaive"]
+032: 
+033: # -----------------------------
+034: # 3) Metrics
+035: # -----------------------------
+036: def evaluate(y_true, y_pred, name="Seasonal-Naive"):
+037:     r2   = r2_score(y_true, y_pred)
+038:     mae  = mean_absolute_error(y_true, y_pred)
+039:     rmse = sqrt(np.mean((y_true - y_pred)**2))
+040:     mape = float(np.mean(np.abs((y_true - y_pred) / y_true)) * 100)
+041:     print(f"\n{name} (Hong Kong, Test=Sep–Dec 2024)")
+042:     print(f"R²   : {r2:.3f}")
+043:     print(f"MAE  : {mae:,.0f}")
+044:     print(f"RMSE : {rmse:,.0f}")
+045:     print(f"MAPE : {mape:.2f}%")
+046:     return {"R2": r2, "MAE": mae, "RMSE": rmse, "MAPE": mape}
+047: 
+048: metrics = evaluate(y_true, y_pred)
+049: 
+050: # -----------------------------
+051: # 4) Month-by-Month Table
+052: # -----------------------------
+053: out = pd.DataFrame({
+054:     "date": y_true.index,
+055:     "actual": y_true.astype(int),
+056:     "snaive_pred": np.round(y_pred).astype(int)
+057: }).set_index("date")
+058: 
+059: out["abs_err"] = (out["actual"] - out["snaive_pred"]).abs()
+060: out["ape_%"]   = (out["abs_err"] / out["actual"] * 100).round(2)
+061: 
+062: print("\n=== 2024 Sep–Dec — Hong Kong (Seasonal-Naive) ===")
+063: print(out)
+SAVED OUTPUT: 
+Seasonal-Naive (Hong Kong, Test=Sep–Dec 2024)
+R²   : 0.240
+MAE  : 381,635
+RMSE : 408,301
+MAPE : 10.10%
+
+=== 2024 Sep–Dec — Hong Kong (Seasonal-Naive) ===
+             actual  snaive_pred  abs_err  ape_%
+date                                            
+2024-09-01  3062003      2771826   290177   9.48
+2024-10-01  4090054      3458778   631276  15.43
+2024-11-01  3568437      3288915   279522   7.83
+2024-12-01  4255551      3929986   325565   7.65
+
+CELL 2 [code] execution_count=None
