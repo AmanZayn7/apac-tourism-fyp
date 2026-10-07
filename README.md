@@ -1,5 +1,7 @@
 # APAC Travel Observatory
 
+**Live demo:** [APAC Tourism](https://apac-tourism.streamlit.app/)
+
 **A reproducible tourism forecasting portfolio project by Abdul Muhaimin Aman.**
 
 Explore monthly visitor arrivals for Singapore, Hong Kong, and a Bangkok-labelled Thailand proxy. Compare seven forecasting candidates, inspect chronological validation and final holdout results, and export forecasts with their assumptions attached.
