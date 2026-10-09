@@ -45,9 +45,9 @@ For a managed container host, configure port 8501 and health path `/_stcore/heal
 - **Very wide error bands/negative R²:** these are model/data findings, not UI failures. Consult the full validation tables and methodology.
 - **Dependencies change:** update `requirements.in`, resolve and pin the complete runtime closure (including platform-specific watchdog), run pip check/audit and tests, rebuild artifacts, and review changed metrics. Do not silently regenerate a lock with unrelated development packages.
 
-## Remaining live-deployment action
+## Hosted application
 
-No public deployment was attempted: there is no configured Git remote or authenticated target hosting account for this project. To publish, supply a GitHub repository plus authenticated Streamlit Community Cloud access, or an authenticated container hosting target. The code, data bundle, runtime lock, runbook, and deployment configuration are complete; the account/repository connection and provider deployment are the remaining external steps.
+The public dashboard is available at https://apac-tourism.streamlit.app/. Dated browser checks are recorded in [live verification](LIVE_VERIFICATION_2026-10-07.md). Container and local checks cover separate environments and should not be treated as proof of current hosted uptime.
 
 ## XGBoost and corrected notebook dependencies (7 October revision)
 
@@ -66,8 +66,6 @@ The release bundle is reproduced on macOS arm64; Linux refitting produces differ
 - Entrypoint: `streamlit_app.py`
 - Python: **3.11** in Advanced settings
 - Secrets: none required by this application
-- Intended access: public historical portfolio/research demonstration, as requested by the owner
+- Access: public historical portfolio/research demonstration
 
-Sign in at https://share.streamlit.io using the project owner's GitHub account, grant access to the private repository, and choose Create app. The repository is public. Review the app's viewer access settings before sharing its URL. The source references do not by themselves verify the preprocessed target data; consult `DATA.md`.
-
-The Codex browser-control tool failed to initialize in this session, so provider sign-in, repository authorization and the Create app submission require the owner to complete those steps in their browser. No live hosting deployment is claimed by the GitHub verification record.
+For a new deployment, connect Streamlit Community Cloud to `AmanZayn7/apac-tourism-fyp`, select `main` and `streamlit_app.py`, and set Python 3.11. The repository is public and the application requires no secrets. Review viewer access settings before sharing the URL. Source references identify the publishers; the prepared inputs and their limitations are documented in [data provenance](DATA.md).

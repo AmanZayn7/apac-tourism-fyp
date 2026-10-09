@@ -10,15 +10,15 @@ The three CSVs in `raw/` are preserved byte-for-byte from the supplied project. 
 
 The loader uses only `date` and `visitor_arrivals`. It derives calendar features from the date, avoiding duplicate renamed year/month columns. It does not silently drop records, fill targets, or consume contemporaneous external variables. The raw files retain all original columns for investigation.
 
-The project owner confirmed the publisher links below on 7 October 2026. Original extraction dates, collection scripts, release calendars, revision history, and preparation records remain unavailable. Confirmed source references do not establish that every supplied CSV value matches the publisher series. Upstream revisions, interpolation, or filling may already contain information from later months; the new code prevents its own lookahead but cannot undo undocumented upstream leakage.
+The publisher links below were recorded in the project materials on 7 October 2026. Original extraction dates, collection scripts, release calendars, revision history, and preparation records remain unavailable. Confirmed source references do not establish that every supplied CSV value matches the publisher series. Upstream revisions, interpolation, or filling may already contain information from later months; the new code prevents its own lookahead but cannot undo undocumented upstream leakage.
 
 Cross-destination volume comparisons are limited by unresolved geographic definitions. The dashboard does not add the three series into an “APAC total,” and arrival events should not be interpreted as unique travelers. The included outlook is a historical 2025 scenario, not an up-to-date forecast for the date of use.
 
-Before presenting the work as a current operational data product, document the exact publisher, geographic coverage, definition, release lag, revision policy, missing-value treatment, and redistribution terms for each series. Then update observations and rebuild; the date-driven protocol will advance automatically. No retrieval or licensing history was invented during this upgrade.
+Before presenting the work as a current operational data product, document the exact publisher, geographic coverage, definition, release lag, revision policy, missing-value treatment, and redistribution terms for each series. Then update observations and rebuild; the date-driven protocol will advance automatically. Original retrieval and licensing records are not available.
 
-## Owner-confirmed arrivals sources — 7 October 2026
+## Documented arrivals sources — 7 October 2026
 
-These links were supplied in the FYP report screenshot and explicitly confirmed by the project owner. Verification below concerns the accessible publisher pages and their stated terms; a row-by-row reconciliation with the supplied CSVs has not been performed. The verification date is not the original dataset download date.
+These references are recorded in the FYP materials. Checks cover accessible publisher pages and their stated terms, plus the Singapore row-by-row reconciliation below. The Hong Kong and Thailand inputs have not been fully reconciled. The verification date is not the original dataset download date.
 
 | Project series | Source reference | Verification and remaining limits |
 |---|---|---|
@@ -32,7 +32,7 @@ These links were supplied in the FYP report screenshot and explicitly confirmed 
 - **Hong Kong:** [HKTB terms](https://www.discoverhongkong.com/eng/terms-of-use.html), especially sections 4 and 10, permit personal non-commercial downloading but restrict reproduction/distribution of protected information absent a separate licence or permission. General website access is not evidence of an open-data grant. Dataset-specific terms or permission covering a public repository/dashboard remain unconfirmed.
 - **Thailand:** [BOT terms](https://www.bot.or.th/en/terms-and-condition.html) permit downloading and copying for user use, subject to specific restrictions. They do not provide an explicit open-data redistribution licence for this project. The tourism series credits another ministry; verify the applicable dataset-specific reuse terms rather than assuming an unrestricted licence.
 
-The owner requested publication as a public historical portfolio/research demonstration. Dataset-specific redistribution terms remain unconfirmed; publication is not a claim that these datasets have a verified open licence. No source-data ownership or broad licence is claimed for the combined CSVs. Their hotel occupancy and Google Trends columns are outside the scope of these three arrivals references and need separate provenance if redistributed. The legacy copies and the full downloadable evidence bundle also contain historical data; removing only `raw/` would not remove all redistributed observations.
+The repository presents a public historical portfolio/research demonstration. Dataset-specific redistribution terms remain unconfirmed; publication is not a claim that these datasets have a verified open licence. No source-data ownership or broad licence is claimed for the combined CSVs. Their hotel occupancy and Google Trends columns are outside the scope of these three arrivals references and need separate provenance if redistributed. The legacy copies and the full downloadable evidence bundle also contain historical data; removing only `raw/` would not remove all redistributed observations.
 
 ## Singapore source reconciliation — 7 October 2026
 
@@ -44,6 +44,6 @@ This establishes a mismatch with the current referenced series, not the cause of
 
 A potentially reusable alternative for Hong Kong is [C&SD visitor-arrivals table 650-80001](https://www.censtatd.gov.hk/en/web_table.html?id=650-80001), listed on [DATA.GOV.HK](https://data.gov.hk/en-data/dataset/hk-censtatd-tablechart-650-80001/resource/00ba3cb2-e426-487d-ab00-fb27f677efee). [C&SD's notice](https://www.censtatd.gov.hk/en/page_31.html) permits specified statistical information reuse subject to attribution, modification disclosure and third-party exclusions. This is an investigation lead, not a replacement source already reconciled with the project's filled HKTB-based CSV.
 
-### Owner clarification
+### Singapore preprocessing
 
-On 7 October 2026 the owner confirmed that Singapore arrival values were transformed during preprocessing. The numerical mismatch therefore must not be presented as proof of an unexplained copying error. The exact transformations, their parameters, order, time windows and use of future observations remain to be documented. This is necessary to interpret the target units and establish whether upstream preprocessing itself introduced lookahead. The original source values, supplied preprocessed targets, and log1p transformations performed later by the model are distinct stages. Model definitions and saved results remain unchanged.
+Project records dated 7 October 2026 identify preprocessing transformations of the Singapore arrival values. The numerical mismatch therefore must not be presented as proof of an unexplained copying error. The exact transformations, their parameters, order, time windows and use of future observations remain to be documented. This is necessary to interpret the target units and establish whether upstream preprocessing itself introduced lookahead. The original source values, supplied preprocessed targets, and log1p transformations performed later by the model are distinct stages. Model definitions and saved results remain unchanged.

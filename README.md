@@ -44,8 +44,8 @@ The active pipeline uses **date and visitor arrivals**. It derives calendar feat
 Data interpretation requires three distinctions:
 
 - **Geographic scope:** the cited Thailand arrivals series is national. The Bangkok label is retained as a research proxy, not a claim of city-only arrivals.
-- **Preparation history:** the owner confirmed preprocessing of Singapore arrival values; the exact steps are not available. Hong Kong's supplied file is labelled as filled, but its filling procedure is undocumented.
-- **Source attribution:** the links identify the owner-reported publishers. They do not certify that the prepared CSVs reproduce the original series without alteration. A comparison against the current SingStat Total series found differences in all 120 supplied months.
+- **Preparation history:** Singapore arrival values were preprocessed; the exact steps are not available. Hong Kong's supplied file is labelled as filled, but its filling procedure is undocumented.
+- **Source attribution:** the links identify the publishers recorded in the project materials. They do not certify that the prepared CSVs reproduce the original series without alteration. A comparison against the current SingStat Total series found differences in all 120 supplied months.
 
 The `raw/` directory contains the **as-supplied inputs**, not a guarantee of unprocessed publisher downloads. Source reconciliation, units, and reuse terms are detailed in [Data Documentation](docs/DATA.md). The Singapore source's [Open Data Licence](https://data.gov.sg/open-data-licence) and other publishers' terms should be considered separately from the project's code.
 

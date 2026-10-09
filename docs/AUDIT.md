@@ -6,7 +6,7 @@ The supplied folder contained a small Python/Streamlit application, three 120-ro
 
 The original requirements were installed into a separate Python 3.11 environment. Running `python -m stis.build_artifacts` on a workspace copy succeeded and reproduced **all three original metric JSON files exactly**. Those saved metrics therefore reflect the supplied implementation; they are not merely stale fabricated outputs. The original chart/export/model-card UI was also exercised in Streamlit's AppTest with its `app/` import directory supplied. A bare AppTest invocation fails on the unqualified `components` import, illustrating the original path sensitivity; this does not by itself establish that every normal Streamlit CLI invocation fails.
 
-Original raw data, application source, saved outputs, and notebooks are archived under `legacy/`. Raw data is duplicated unchanged into the new runnable app. The original Downloads folder was not edited.
+Original raw data, application source, saved outputs, and notebooks are archived under `legacy/`. Raw data is duplicated unchanged into the new runnable app. The archived originals are retained for comparison.
 
 ## Findings and resolutions
 
