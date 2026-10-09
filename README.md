@@ -1,4 +1,4 @@
-# APAC Tourism Forecast
+# Asia Pacific Tourism Forecast
 
 ## Comparative Tourism Forecasting Across Three APAC Markets
 
@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-APAC Travel Observatory evaluates how statistical baselines and machine learning models forecast monthly visitor arrivals across Singapore, Hong Kong, and a Bangkok-labelled Thailand proxy. The project combines chronological model evaluation, a shared forecasting pipeline, and an interactive Streamlit dashboard that makes the results accessible for comparison and review.
+Asia Pacific Tourism Forecast evaluates how statistical baselines and machine learning models forecast monthly visitor arrivals across Singapore, Hong Kong, and a Bangkok-labelled Thailand proxy. The project combines chronological model evaluation, a shared forecasting pipeline, and an interactive Streamlit dashboard that makes the results accessible for comparison and review.
 
 The analysis uses **120 monthly observations per series, covering January 2015–December 2024**. Seven model candidates are evaluated on six expanding annual validation windows, followed by a separate 2024 reporting holdout. The published outlook covers **January–December 2025**, generated after refitting on the complete supplied history.
 
