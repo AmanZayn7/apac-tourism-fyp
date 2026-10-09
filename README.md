@@ -1,4 +1,4 @@
-# APAC Travel Observatory
+# APAC Tourism Forecast
 
 ## Comparative Tourism Forecasting Across Three APAC Markets
 
